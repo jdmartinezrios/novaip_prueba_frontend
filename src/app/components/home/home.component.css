@@ -1,0 +1,33 @@
+.mainContainer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(155deg, #00355c -300%, #efefef 50%, #00355c 300%);
+    position: relative;
+    overflow: hidden;
+}
+
+.mainContainer button {
+    width: 12em;
+}
+
+.presentation {
+    position: absolute;
+    left: 2em;
+    bottom: .5em;
+}
+
+::ng-deep.btn-outline-dark {
+    color: #09416f;
+    border-color: #09416f;
+}
+
+::ng-deep.btn-outline-dark:hover, ::ng-deep.btn-outline-dark:focus, ::ng-deep.btn-outline-dark:visited {
+    color: #fff !important;
+    border-color: #09416f !important;
+    background-color: #09416f !important;
+}
+

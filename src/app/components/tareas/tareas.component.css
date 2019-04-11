@@ -1,0 +1,502 @@
+@-webkit-keyframes sk-waveStretchDelay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+    }
+    20% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+}
+
+@keyframes sk-waveStretchDelay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+    }
+    20% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+}
+
+@-webkit-keyframes pgAnimLoading {
+    from {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes pgAnimLoading {
+    from {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes pgAnimLoading {
+    from {
+        opacity: 0;
+    }
+}
+
+@-ms-keyframes pgAnimLoading {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes pgAnimLoading {
+    from {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes pgAnimLoaded {
+    from {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes pgAnimLoaded {
+    from {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes pgAnimLoaded {
+    from {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes pgAnimLoaded {
+    from {
+        opacity: 1;
+    }
+}
+
+@keyframes pgAnimLoaded {
+    from {
+        opacity: 1;
+    }
+}
+
+/* line 17, ../src/please-wait.scss */
+
+body.pg-loading {
+    overflow: hidden;
+}
+
+/* line 21, ../src/please-wait.scss */
+
+.pg-loading-screen {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000000;
+    opacity: .7;
+    -webkit-transition: background-color 0.6s ease-in-out 0s;
+    -moz-transition: background-color 0.6s ease-in-out 0s;
+    -ms-transition: background-color 0.6s ease-in-out 0s;
+    -o-transition: background-color 0.6s ease-in-out 0s;
+    transition: background-color 0.6s ease-in-out 0s;
+}
+
+/* line 32, ../src/please-wait.scss */
+
+.pg-loading-screen.pg-loaded {
+    opacity: 0;
+    -webkit-animation: pgAnimLoaded 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
+    -moz-animation: pgAnimLoaded 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
+    -ms-animation: pgAnimLoaded 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
+    -o-animation: pgAnimLoaded 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
+    animation: pgAnimLoaded 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
+}
+
+/* line 38, ../src/please-wait.scss */
+
+.pg-loading-screen.pg-loading .pg-loading-logo-header, .pg-loading-screen.pg-loading .pg-loading-html {
+    opacity: 1;
+}
+
+/* line 42, ../src/please-wait.scss */
+
+.pg-loading-screen.pg-loading .pg-loading-logo-header, .pg-loading-screen.pg-loading .pg-loading-html:not(.pg-loaded) {
+    -webkit-animation: pgAnimLoading 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+    -moz-animation: pgAnimLoading 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+    -ms-animation: pgAnimLoading 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+    -o-animation: pgAnimLoading 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+    animation: pgAnimLoading 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+}
+
+/* line 46, ../src/please-wait.scss */
+
+.pg-loading-screen.pg-loading .pg-loading-html:not(.pg-loaded) {
+    -webkit-animation-delay: 0.3s;
+    -moz-animation-delay: 0.3s;
+    -ms-animation-delay: 0.3s;
+    -o-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+/* line 51, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-inner {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: static;
+}
+
+/* line 59, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-center-outer {
+    width: 100%;
+    padding: 0;
+    display: table !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+/* line 70, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-center-middle {
+    padding: 0;
+    vertical-align: middle;
+    display: table-cell !important;
+    margin: 0;
+    text-align: center;
+}
+
+/* line 78, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-logo-header, .pg-loading-screen .pg-loading-html {
+    width: 100%;
+    opacity: 0;
+}
+
+/* line 83, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-logo-header {
+    text-align: center;
+}
+
+/* line 86, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-logo-header img {
+    display: inline-block !important;
+    width: 500px;
+    height: 400px;
+}
+
+/* line 91, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-html {
+    margin-top: 40px;
+}
+
+/* line 94, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-html.pg-loaded {
+    -webkit-transition: opacity 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: opacity 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    -ms-transition: opacity 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    -o-transition: opacity 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: opacity 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* line 97, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-html.pg-loaded.pg-removing {
+    opacity: 0;
+}
+
+/* line 101, ../src/please-wait.scss */
+
+.pg-loading-screen .pg-loading-html.pg-loaded.pg-loading {
+    opacity: 1;
+}
+
+.sk-spinner-wave.sk-spinner {
+    margin: 0 auto;
+    width: 60px;
+    height: 70px;
+    text-align: center;
+    font-size: 10px;
+    transform: translateY(-120px);
+}
+
+.sk-spinner-wave div {
+    background-color: #09416f;
+    height: 100%;
+    width: 6px;
+    margin: 0 1px;
+    display: inline-block;
+    -webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+    animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+}
+
+.sk-spinner-wave .sk-rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.sk-spinner-wave .sk-rect3 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+}
+
+.sk-spinner-wave .sk-rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.sk-spinner-wave .sk-rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+.navUser {
+    background-color: #0c5198;
+}
+
+.containerUsuarios {
+    padding-top: 15px;
+}
+
+.colForms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.labelForm {
+    padding: 0px 15px;
+    min-width: 180px;
+    max-width: 180px;
+    margin: 0;
+    text-align: right;
+    color: #09416f;
+}
+
+.labelFormFilter {
+    padding: 0px 15px 0px 0px;
+    min-width: 130px;
+    max-width: 130px;
+    margin: 0;
+    text-align: right;
+    color: #09416f;
+}
+
+.button-form {
+    background: #09416f;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+
+.icon-form {
+    color: rgb(255, 255, 255);
+}
+
+.formActions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.formFields {
+    min-width: calc(100% - 180px);
+}
+
+.formFieldFilter {
+    min-width: calc(100% - 190px);
+    margin-right: 2em;
+}
+
+.logout {
+    cursor: pointer;
+}
+
+.logoutButton {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.logoutButton span {
+    margin-top: 3px;
+}
+
+.titlePinos {
+    color: #09416f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer {
+    position: relative;
+    margin-top: 1em;
+    border-top: 5px solid #0c5198;
+    height: 4em;
+    text-align: center;
+    padding-top: 1.1em;
+    color: #09416f;
+    font-size: 16px;
+}
+
+.logoFooter {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+}
+
+.mat-elevation-z8 {
+    overflow: auto;
+    height: 24.5em;
+}
+
+::ng-deep.mat-form-field-flex {
+    align-items: inherit !important;
+}
+
+::ng-deep.mat-calendar-body-selected {
+    background-color: #09416f;
+}
+
+::ng-deep.mat-header-cell {
+    font-size: 15px;
+    font-weight: 700;
+    color: #09416f !important;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 6px !important;
+}
+
+::ng-deep.mat-form-field-wrapper {
+    padding-bottom: 0px;
+}
+
+/* ::ng-deep.cdk-overlay-pane {
+    transform: translateX(-16px) translateY(-12px) !important;
+}
+
+::ng-deep.mat-select-panel .mat-option {
+    line-height: 1.3em !important;
+    height: 1.3em !important;
+    border-bottom: .5px solid #C0C0C0;
+} */
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    height: 3em;
+    padding: .8em 0;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+    transform: translateY(-3px) !important;
+}
+
+::ng-deep.mat-form-field-infix {
+    border-top: .4em solid transparent;
+}
+
+::ng-deep.mat-card:not([class*=mat-elevation-z]) {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .28) !important;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .28) !important;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .28) !important;
+}
+
+/* mat-icon-stepper selected color change  */
+
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: #09416f!important;
+}
+
+/*mat-input focused color */
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #0c5198!important;
+}
+
+/* mat-label focused style */
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #09416f!important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #09416f !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #0c5198 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #0c5198 !important;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #0c5198 !important;
+}
+
+::ng-deep.mat-simple-snackbar-action {
+    color: #efefef !important;
+}
+
+@media screen and (max-width: 878px) {
+    .labelForm {
+        text-align: left;
+    }
+    .colForms {
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: unset;
+    }
+    .formFieldFilter {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .footer span, .footer img {
+        display: block;
+        position: inherit;
+    }
+    .footer {
+        height: 7em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 385px) {
+    .formInscription {
+        margin-bottom: 140px !important;
+    }
+}
+
+@media screen and (min-width: 1360px) {
+    .footer {
+        width: 100%;
+        position: fixed !important;
+        bottom: 0;
+        z-index: 500;
+        background: #fff;
+    }
+    ::ng-deep.mat-card {
+        height: calc(100vh - 155px) !important;
+    }
+}

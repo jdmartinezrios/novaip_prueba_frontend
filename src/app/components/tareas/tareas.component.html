@@ -1,0 +1,158 @@
+<div class="animated fadeIn">
+  <nav class="navbar navbar-expand-lg navbar-dark navUser d-flex justify-content-between">
+    <span class="navbar-text text-light font-weight-bold lead d-flex logout">
+      <mat-icon *ngIf="getParams() === 'resgistrar'">verified_user</mat-icon>
+      <mat-icon *ngIf="getParams() === 'listar'">playlist_add_check</mat-icon>&nbsp; {{tareas}}
+    </span>
+    <span class="navbar-text text-light d-flex logoutButton" (click)="goToHome()">
+      <mat-icon>subdirectory_arrow_left</mat-icon>&nbsp; <span>Volver</span>
+    </span>
+  </nav>
+  <div class="container-fluid containerUsuarios">
+    <mat-card style="overflow: hidden">
+      <mat-card-title class="text-center font-weight-bold titlePinos">
+          <mat-icon *ngIf="getParams() === 'resgistrar'">verified_user</mat-icon>
+          <mat-icon *ngIf="getParams() === 'listar'">playlist_add_check</mat-icon>&nbsp; {{tareas}} de TAREAS    
+      </mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="inscription" class="formInscription" style="margin-bottom: 118px" (submit)="saveTasks(tasks)"
+          *ngIf="getParams() === 'resgistrar'">
+          <div class="row">
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Decsripción:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Decsripción</mat-label>
+                <input matInput formControlName="description" placeholder="Decsripción" [(ngModel)]="tasks.descripcion">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Fecha ejecución:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Fecha ejecución</mat-label>
+                <input matInput formControlName="dateExecution" [matDatepicker]="picker" placeholder="Fecha ejecución"
+                  [(ngModel)]="tasks.fechaEjecucion">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Estado:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="status" placeholder="Estado" [(ngModel)]="tasks.estado">
+                  <mat-option selected>-- Seleccione --</mat-option>
+                  <mat-option value="true">Activo</mat-option>
+                  <mat-option value="false">Inactivo</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Usuario:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Usuario</mat-label>
+                <mat-select formControlName="userId" placeholder="Usuario" [(ngModel)]="tasks.usuarioId.usuarioId">
+                  <mat-option selected>-- Seleccione --</mat-option>
+                  <mat-option *ngFor="let user of listUsers" [value]="user.usuarioId">{{user.email}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="formActions">
+            <button type="submit" mat-raised-button class="button-form">
+              Registrar <mat-icon class="icon-form">
+                save</mat-icon></button>
+          </div>
+        </form>
+        <div class="formInscription" *ngIf="getParams() === 'listar'">
+          <div class="row">
+            <div class="col-md-12 d-flex colForms">
+              <label class="labelFormFilter">
+                Filtro de tareas:
+              </label>
+              <mat-form-field appearance="outline" class="formFieldFilter">
+                <mat-label>Filtro de tareas por usuario, fecha de creación o estado</mat-label>
+                <input matInput (keyup)="applyFilter($event.target.value)"
+                  placeholder="Filtro de tareas por usuario, fecha de creación o estado">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mat-elevation-z8" *ngIf="getParams() === 'listar'">
+          <table mat-table [dataSource]="dataSource" style="width: 100%">
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="Id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let task"> {{task.tareaId}} </td>
+            </ng-container>
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Decripcion </th>
+              <td mat-cell *matCellDef="let task"> {{task.descripcion}}</td>
+            </ng-container>
+
+            <!-- DateExcecution Column -->
+            <ng-container matColumnDef="DateExcecution">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha ejecución </th>
+              <td mat-cell *matCellDef="let task"> {{task.fechaEjecucion}} </td>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+              <td mat-cell *matCellDef="let task"> {{task.estado}} </td>
+            </ng-container>
+
+            <!-- User Column -->
+            <ng-container matColumnDef="User">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+              <td mat-cell *matCellDef="let task"> {{task.email}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let task; columns: displayedColumns;">
+            </tr>
+          </table>
+        </div>
+        <mat-paginator *ngIf="getParams() === 'listar'" [pageSize]="10" [pageSizeOptions]="[10, 50, 100]">
+        </mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <footer class="footer">
+    <span>NOVAIP. Todos los derechos reservados</span>
+    <img class="logoFooter" src="assets/images/favicon.png" alt="logo Coomeva" height="60" width="120">
+  </footer>
+</div>
+<!-- LOADER -->
+<div class="pg-loading-screen pg-loading" style="background-color: #efefef;" *ngIf="loader">
+  <div class="pg-loading-inner">
+    <div class="pg-loading-center-outer">
+      <div class="pg-loading-center-middle">
+        <h1 class="pg-loading-logo-header">
+          <img class="pg-loading-logo" src="assets/images/favicon.png">
+        </h1>
+        <div class="pg-loading-html pg-loaded">
+          <p class="loading-message"></p>
+          <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN LOADER -->

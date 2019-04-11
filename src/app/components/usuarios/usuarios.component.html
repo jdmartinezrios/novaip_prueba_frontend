@@ -1,0 +1,107 @@
+<div class="animated fadeIn">
+  <nav class="navbar navbar-expand-lg navbar-dark navUser d-flex justify-content-between">
+    <span class="navbar-text text-light font-weight-bold lead d-flex logout">
+      <mat-icon>verified_user</mat-icon>&nbsp; Registrar
+    </span>
+    <span class="navbar-text text-light d-flex logoutButton" (click)="goToHome()">
+      <mat-icon>subdirectory_arrow_left</mat-icon>&nbsp; <span>Volver</span>
+    </span>
+  </nav>
+  <div class="container-fluid containerUsuarios">
+    <mat-card>
+      <mat-card-title class="text-center font-weight-bold titlePinos">
+        <mat-icon>verified_user</mat-icon>&nbsp; Registrar de USUARIOS
+      </mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="inscription" class="formInscription" style="margin-bottom: 118px"
+          (submit)="saveUser(users)">
+          <div class="row">
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Nombres:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Nombres</mat-label>
+                <input matInput formControlName="firstName" placeholder="Nombres" [(ngModel)]="users.nombres">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Apellidos:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Apellidos</mat-label>
+                <input matInput formControlName="lastName" placeholder="Apellidos" [(ngModel)]="users.apellidos">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Fecha de creación:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Fecha de creación</mat-label>
+                <input matInput formControlName="dateCreated" [matDatepicker]="picker" placeholder="Fecha de creación" [(ngModel)]="users.fechaCreacion">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Correo electronico:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Correo electronico</mat-label>
+                <input matInput formControlName="email" placeholder="Correo electronico" [(ngModel)]="users.email">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex colForms">
+              <label class="labelForm">
+                Estado:
+              </label>
+              <mat-form-field appearance="outline" class="formFields">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="status" placeholder="Estado" [(ngModel)]="users.estado">
+                  <mat-option selected>-- Seleccione --</mat-option>
+                  <mat-option value="true">Activo</mat-option>
+                  <mat-option value="false">Inactivo</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="formActions">
+            <button type="submit" mat-raised-button class="button-form">
+              Registrar <mat-icon class="icon-form">
+                save</mat-icon></button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <footer class="footer">
+    <span>NOVAIP. Todos los derechos reservados</span>
+    <img class="logoFooter" src="assets/images/favicon.png" alt="logo Coomeva" height="60" width="120">
+  </footer>
+</div>
+<!-- LOADER -->
+<div class="pg-loading-screen pg-loading" style="background-color: #efefef;" *ngIf="loader">
+  <div class="pg-loading-inner">
+    <div class="pg-loading-center-outer">
+      <div class="pg-loading-center-middle">
+        <h1 class="pg-loading-logo-header">
+          <img class="pg-loading-logo" src="assets/images/favicon.png">
+        </h1>
+        <div class="pg-loading-html pg-loaded">
+          <p class="loading-message"></p>
+          <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN LOADER -->
