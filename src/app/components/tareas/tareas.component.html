@@ -12,7 +12,7 @@
     <mat-card style="overflow: hidden">
       <mat-card-title class="text-center font-weight-bold titlePinos">
           <mat-icon *ngIf="getParams() === 'resgistrar'">verified_user</mat-icon>
-          <mat-icon *ngIf="getParams() === 'listar'">playlist_add_check</mat-icon>&nbsp; {{tareas}} de TAREAS    
+          <mat-icon *ngIf="getParams() === 'listar'">playlist_add_check</mat-icon>&nbsp; {{tareas}} TAREAS    
       </mat-card-title>
       <mat-card-content>
         <form [formGroup]="inscription" class="formInscription" style="margin-bottom: 118px" (submit)="saveTasks(tasks)"
